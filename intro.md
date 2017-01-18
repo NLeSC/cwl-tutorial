@@ -1,26 +1,42 @@
-# Lesson Objectives
+# Basic CWL Tutorial
+
+## Lesson Objectives
 
 - What is cwl
 - How to install cwl
 - how to write a basic workflow
 
+## Does CWLTool Work?
 
-# Does CWLTool Work?
+First things first, we will check it cwltool is properly installed.
 
+Command: Running the cwltool and asking it to print its version.
+```
 (cwl) niels@ESLT0051:~$ cwltool --version
+```
+
+Output: something like
+```
 /home/niels/.virtualenvs/cwl/bin/cwltool 1.0.20161007181528
+```
 
-# Hello World
+If this fails see https://github.com/common-workflow-language/cwltool for installation instructions, usually as simple as
 
-# Input File
+```
+pip install cwltool
+```
 
-# Input Flags
+## Hello World
 
-# Output File
+## Input File
 
-# parameter reference
+## Input Flags
 
-# two-step workflow
+## Output File
 
-# With (two) Docker Containers
+## parameter reference
+
+## two-step workflow
+
+## With (two) Docker Containers
 
