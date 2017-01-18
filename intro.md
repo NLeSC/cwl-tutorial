@@ -1,4 +1,8 @@
-# Basic CWL Tutorial
+# Basic Common Workflow Language Tutorial
+
+This is a basic Common Workflow Language (CWL) tutorial meant to be given in a [software carpentry](https://software-carpentry.org/) style lesson (hands on live coding).
+
+The content of this tutorial is based on [A Gentle Introduction to the Common Workflow Language](http://www.commonwl.org/v1.0/UserGuide.html), more fitting for self-learning.
 
 ## Lesson Objectives
 
@@ -8,7 +12,7 @@
 
 ## Does CWLTool Work?
 
-First things first, we will check it cwltool is properly installed.
+First things first, we will check if cwltool is properly installed.
 
 Command: Running the cwltool and asking it to print its version.
 ```
@@ -26,11 +30,53 @@ If this fails see https://github.com/common-workflow-language/cwltool for instal
 pip install cwltool
 ```
 
-## Hello World
+## Simplest example
+
+Write the following into a file:
+
+[hostname.cwl](hostname.cwl)
+```yaml
+cwlVersion: v1.0
+class: CommandLineTool
+baseCommand: hostname
+inputs: []
+outputs: []
+```
+
+## With Arguments
+
+[arguments.cwl](.cwl)
+```yaml
+cwlVersion: v1.0
+class: CommandLineTool
+baseCommand: hostname
+outputs: []
+```
+
+## With inputs (Strings)
+
+Write the following into a file:
+
+[1st-tool.cwl](1st-tool.cwl)
+```yaml
+cwlVersion: v1.0
+class: CommandLineTool
+baseCommand: echo
+inputs:
+  message:
+    type: string
+    inputBinding:
+      position: 1
+outputs: []
+```
+
+and run this simple workflow with the cwl-tool command
+
+```
+cwltool
+```
 
 ## Input File
-
-## Input Flags
 
 ## Output File
 
