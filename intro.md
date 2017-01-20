@@ -43,40 +43,66 @@ inputs: []
 outputs: []
 ```
 
+and run this simple workflow with the cwl-tool command:
+
+```
+cwltool hostname.cwl
+```
+
 ## With Arguments
 
-[arguments.cwl](.cwl)
+- How do we get arguments to a command line tool?
+
+[echo.cwl](echo.cwl)
 ```yaml
 cwlVersion: v1.0
 class: CommandLineTool
-baseCommand: hostname
+baseCommand: echo
+arguments:
+    - Hello world!
+inputs: []
 outputs: []
 ```
 
 ## With inputs (Strings)
 
-Write the following into a file:
+- How do we get non-hardcoded input?
+- Define input, and how it gets to the command line tool
 
-[1st-tool.cwl](1st-tool.cwl)
+[echo-with-input.cwl](echo-with-input.cwl)
 ```yaml
-cwlVersion: v1.0
 class: CommandLineTool
 baseCommand: echo
 inputs:
-  message:
-    type: string
-    inputBinding:
-      position: 1
+    message: 
+      type: string
+      inputBinding:
+        position: 1
 outputs: []
 ```
 
-and run this simple workflow with the cwl-tool command
-
+run:
 ```
-cwltool
+cwltool echo-with-input.cwl
+```
+
+ERROR
+
+oeps. We also need to _specify_ the values of the input
+
+[message.yml](message.yml)
+```yaml
+message: Hello world!
+```
+
+run:
+```
+cwltool echo-with-input.cwl message.yml
 ```
 
 ## Input File
+
+
 
 ## Output File
 
