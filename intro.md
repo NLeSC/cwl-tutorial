@@ -71,6 +71,7 @@ outputs: []
 
 [echo-with-input.cwl](echo-with-input.cwl)
 ```yaml
+cwlVersion: v1.0
 class: CommandLineTool
 baseCommand: echo
 inputs:
@@ -102,13 +103,83 @@ cwltool echo-with-input.cwl message.yml
 
 ## Input File
 
+- How to get a input file. So, we switch to cat as an example.
 
+[cat.cwl](cat.cwl)
+```yaml
+cwlVersion: v1.0
+class: CommandLineTool
+baseCommand: cat
+inputs:
+    message_file: 
+      type: File
+      inputBinding:
+        position: 1
+outputs: []
+```
+
+[inputs-file.yml]
+```yaml
+message_file:
+       class: File
+       path: message.txt
+```
+
+[message.txt](message.txt)
+```
+Hello DTL!
+```
+
+command:
+```
+cwltool cat.cwl inputs-file.yml
+```
 
 ## Output File
 
-## parameter reference
+[wc.cwl](wc.cwl)
+```yaml
+cwlVersion: v1.0
+class: CommandLineTool
+baseCommand: wc
+stdout: output.txt
+inputs:
+    text_file: 
+      type: File
+      inputBinding:
+        position: 1
+outputs:
+    output:
+        type: stdout
+```
+
+
+
+
+run:
+```
+cwltool wc.cwl inputs-long-file.ym
+```
+
+
+[inputs-long-file.yml](inputs-long-file.yml)
+```yaml
+text_file:
+       class: File
+       path: some_text.txt
+```
+
+[some_text.txt](some_text.txt)
+```
+put text here
+```
+
 
 ## two-step workflow
+
+
+## parameter reference
+
 
 ## With (two) Docker Containers
 
