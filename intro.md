@@ -177,6 +177,44 @@ put text here
 
 ## two-step workflow
 
+ls.yml
+```
+cwlVersion: v1.0
+class: CommandLineTool
+baseCommand: ls
+stdout: output.txt
+arguments:
+    - /home
+inputs: []
+outputs:
+    output:
+        type: stdout
+```
+
+workflow.yml
+```
+cwlVersion: v1.0
+class: Workflow
+inputs: []
+
+outputs:
+  files_in_home:
+    type: File
+    outputSource: count/output
+
+steps:
+  list:
+    run: ls.cwl
+    in: []
+    out: [output]
+
+  count:
+    run: wc.cwl
+    in:
+      text_file: list/output
+    out: [output]
+```
+
 
 ## parameter reference
 
