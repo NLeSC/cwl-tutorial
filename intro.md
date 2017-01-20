@@ -215,6 +215,10 @@ steps:
     out: [output]
 ```
 
+run:
+```
+cwltool workflow.cwl
+```
 
 ## parameter reference
 
